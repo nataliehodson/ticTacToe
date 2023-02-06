@@ -62,7 +62,7 @@ function playTicTacToe() {
 
         let diffGroups = [firstRow, secondRow, thirdRow, firstCol, secondCol, thirdCol, diagOne, diagTwo];
 
-        for(const group in diffGroups){
+        for(let group of diffGroups){
             //for(let x = 1; x < 4; x++){
                 console.log(group)
                 if(group[0] === group[1] && group[0] === group[2] && group[1] === group[2]){
