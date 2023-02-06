@@ -6,27 +6,13 @@
         <script src="./script.js"></script>
         <link rel="stylesheet" href="./styles.css">
     </head>
-    <body>
+    <body onload="playTicTacToe()">
         <h1>Let's play Tic Tac Toe!</h1>
-        <div>
-            <table>
-                <tr>
-                    <td><input></td>
-                    <td><input></td>
-                    <td><input></td>
-                </tr>
-                <tr>
-                    <td><input></td>
-                    <td><input></td>
-                    <td><input></td>
-                </tr>
-                <tr>
-                    <td><input></td>
-                    <td><input></td>
-                    <td><input></td>
-                </tr>
-            </table>
-            <button>Play</button>
+        <div class="container">
+            <form class="grid">
+            </form>
+            <button class="play" type="button">Play</button>
+            <p class="winOrLose"></p>
         </div>
     </body>
 </html>
