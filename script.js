@@ -1,12 +1,39 @@
 function playTicTacToe() {
+    const startCont = document.querySelector('.startCont');
+    const container = document.querySelector('.gridCont');
+    const submitButt = document.querySelector('.submit');
+    const pOne = document.querySelector('.pOne');
+    const pTwo = document.querySelector('.pTwo');
+    const nameRequest = document.querySelector('.nameRequest');
+
+    
     const playButt = document.querySelector('.play');
     const grid = document.querySelector('.grid');
-    const container = document.querySelector('.container');
     const winOrLose = document.querySelector('.winOrLose');
+
+
+    //give names to player one and player two.
+    //only show the board if they have both entered diff names
+
+    function boardAppear() {
+        console.log(pOne.value)
+        nameRequest.textContent = 'Please enter your names!'
+        if(!pOne.value || !pTwo.value){
+            nameRequest.style.display = 'block'
+        } else if (pOne.value === pTwo.value) {
+            nameRequest.style.display = 'block';
+            nameRequest.textContent = 'Enter different names please!'
+        } else {
+            container.style.display = 'block';
+            startCont.style.display = 'none';
+        }
+        
+    }
+
+    submitButt.addEventListener('click', boardAppear)
 
     let inputs = new Array(9);
     let guesses = [...Array(9)].map(x => '');
-    console.log(guesses)
 
 
     //create cells for tic tac toe grid
@@ -21,6 +48,8 @@ function playTicTacToe() {
         cell.setAttribute('maxlength', '1');
 
     }
+
+    document.querySelector('.gridCont h3').textContent = `${pOne.value} plays X, ${pTwo.value} plays O`
 
     /*//disable cells that aren't selected
     function disable(index) {
@@ -42,9 +71,14 @@ function playTicTacToe() {
 
     function submit () {
         for (let i = 0; i < inputs.length; i++) {
-            guesses[i] = document.getElementById(`${i+1}`).value;
+            let input = document.getElementById(`${i+1}`).value;
+            input = input.toLowerCase();
+            if(input == 'o' || input == 'x'){
+                guesses[i] = input;
+            } else {
+                winOrLose.textContent = 'Please enter X or O';
+            }
         }
-        console.log(guesses)
         checkCells();
     }
     
@@ -63,14 +97,16 @@ function playTicTacToe() {
         let diffGroups = [firstRow, secondRow, thirdRow, firstCol, secondCol, thirdCol, diagOne, diagTwo];
 
         for(let group of diffGroups){
-            //for(let x = 1; x < 4; x++){
-                console.log(group)
+            if (group[0] === group[1] && group[0] === group[2] && group[1] === group[2] && group[1] != ''){
                 if(group[0] === group[1] && group[0] === group[2] && group[1] === group[2]){
-                    winOrLose.innerHTML = 'Well done!';
-                } else {
-                    winOrLose.innerHTML = 'oops!';
+                    if(group[0] === 'X') {
+                        winOrLose.innerHTML = `Well done ${pOne.value}, you win!`;
+                    } else {
+                        winOrLose.innerHTML = `Well done ${pTwo.value}, you win!`;
+                    }
                 }
-           // }
+            }
+                
         }
         
 

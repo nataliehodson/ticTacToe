@@ -8,7 +8,18 @@
     </head>
     <body onload="playTicTacToe()">
         <h1>Let's play Tic Tac Toe!</h1>
-        <div class="container">
+        <div class="startCont">
+            <h2>Who's playing?</h2>
+            <p class="nameRequest">Please enter your names!</p>
+            <p>Player one:</p>
+            <input class="name pOne">
+            <p>Player two:</p>
+            <input class="name pTwo">
+            <button class="submit">Submit</button>
+        </div>
+        
+        <div class="gridCont">
+            <h3>Player one plays X, player two plays O</h3>
             <form class="grid">
             </form>
             <button class="play" type="button">Play</button>
