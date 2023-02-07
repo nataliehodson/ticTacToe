@@ -152,14 +152,13 @@ function playTicTacToe() {
         restartButt.style.display = 'none';
         playButt.style.display = 'block';
         winOrLose.innerHTML = ``;
-        turns = 0;
         games++;
-        if (games % 2 == 0){
+
+        if(turns % 2 == 0){
             turn.textContent = `${pOne.value}'s turn.`
         } else {
             turn.textContent = `${pTwo.value}'s turn.`
         }
-
 
     }
     restartButt.addEventListener('click', clearAll)
