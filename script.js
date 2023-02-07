@@ -59,22 +59,30 @@ function playTicTacToe() {
     }
 
 
-    /*//disable cells that aren't selected
+    //disable cells that aren't selected
     function disable(index) {
         for (const cell of document.querySelectorAll('.grid input')){
             cell.disabled = true
         }
-        document.getElementById(`${index}`).disabled = false;
+        let selected = document.getElementById(`${index}`)
+        selected.disabled = false;
+        selected.focus();
+
     }
 
-    const inputFields = document.querySelectorAll('.grid input');
-    inputFields.forEach(input => {
-        input.addEventListener('click', function() {
-            let index = this.getAttribute('id')
-            console.log(index)
-            disable(index)
+    function disableOnClick() {
+        const inputFields = document.querySelectorAll('.grid input');
+        inputFields.forEach(input => {
+            input.addEventListener('click', function() {
+                let index = this.getAttribute('id');
+                disable(index);
+            })
         })
-    })*/
+    }
+
+    disableOnClick();
+
+
 
     let turns = 0;
 
@@ -100,6 +108,9 @@ function playTicTacToe() {
                 console.log(typeof(input))
                 break;
             }
+        }
+        for (const cell of document.querySelectorAll('.grid input')){
+            cell.disabled = false;
         }
         checkCells();
     }
